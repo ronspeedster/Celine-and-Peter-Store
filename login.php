@@ -69,7 +69,7 @@ if (isset($_SESSION['username'])) {
                         <div class="col-lg-12">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Device Loan Portal - Login</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Celine and Peter Store - Login</h1>
                                 </div>
                                 <form class="user" method="post" action="process_login.php">
                                     <div class="form-group">

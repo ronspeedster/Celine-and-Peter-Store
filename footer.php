@@ -3,11 +3,10 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Systems Plus College Foundation - ICT Development Unit <?php echo date("Y"); ?></span>
+            <span>Copyright &copy; Celine and Peter Store <?php echo date("Y"); ?></span>
             <br>
             <br>
             <img src="img/logo.png" style="width: 50px;">
-            <img src="img/favicon.png" style="width: 40px;">
         </div>
     </div>
 </footer>

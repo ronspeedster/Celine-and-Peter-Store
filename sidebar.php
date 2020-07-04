@@ -18,7 +18,7 @@ if (!isset($_SESSION['username'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SPCF - Device Loan - Dashboard</title>
+    <title>Celine and Peter Store - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@ if (!isset($_SESSION['username'])) {
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="icon" href="img/logo.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="img/icon.ico" type="image/gif" sizes="16x16">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- required libraries -->
@@ -35,7 +35,7 @@ if (!isset($_SESSION['username'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
         html{
-            font-size: 13.5px;
+            font-size: 0.9rem;
             scroll-behavior: smooth !important;
         }
         .bg-gradient-primary {
@@ -56,11 +56,11 @@ if (!isset($_SESSION['username'])) {
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-            SPCF - DL
+            C&P Store
         </a>
 
         <!-- Divider -->
@@ -81,9 +81,8 @@ if (!isset($_SESSION['username'])) {
             Menu
         </div>
 
-
         <!-- Nav Item - Borrower -->
-        <li class="nav-item">
+        <li class="nav-item" style="display: none;">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-money-check-alt"></i>
@@ -102,21 +101,14 @@ if (!isset($_SESSION['username'])) {
         <li class="nav-item">
             <a class="nav-link" href="devices.php">
                 <i class="fas fa-laptop"></i>
-                <span>Devices</span></a>
+                <span>Inventory</span></a>
         </li>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="report.php">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Reports</span></a>
-        </li>
-
-        <!-- Nav Item - Inquiries -->
-        <li class="nav-item">
-            <a class="nav-link" href="inquiry.php">
-                <i class="fas fa-fw fa-question-circle"></i>
-                <span>Inquiry</span></a>
+                <span>Transactions</span></a>
         </li>
 
         <!-- Nav Item - Accounts -->
