@@ -8,6 +8,8 @@ include('sidebar.php');
         $lastItemID = $newLastItem['id'];
     }
 
+    $getItems = mysqli_query($mysqli, "SELECT * FROM inventory");
+
 ?>
 <title>Inventory - Celine & Peter Store</title>
 <!-- Content Wrapper -->
@@ -45,7 +47,7 @@ include('sidebar.php');
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <form method="post" action="process_student.php">
+                        <form method="post" action="process_inventory.php">
                             <table class="table" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
@@ -65,7 +67,7 @@ include('sidebar.php');
                                     <td><input type="text" name="item_name" class="form-control" required></td>
                                     <td><input type="number" name="qty" class="form-control" required></td>
                                     <td><input type="number" name="price" class="form-control" required></td>
-                                    <td><input type="number" name="total-cost" class="form-control" required></td>
+                                    <td><input type="number" name="total_cost" class="form-control" required></td>
                                     <td><textarea name="description" class="form-control" style="min-height: 100px;"></textarea></td>
                                 </tr>
                                 </tbody>
@@ -99,7 +101,18 @@ include('sidebar.php');
                             </tr>
                             </thead>
                             <tbody>
-
+                            <?php while($newItems = $getItems->fetch_assoc()){ ?>
+                            <tr>
+                                <td><?php echo $newItems['item_code']; ?></td>
+                                <td><?php echo $newItems['item_name']; ?></td>
+                                <td><?php echo $newItems['item_description']; ?></td>
+                                <td><?php echo $newItems['qty']; ?></td>
+                                <td><?php echo $newItems['item_price']; ?></td>
+                                <td><?php echo 'total sold here'; ?></td>
+                                <td><?php echo 'Update Stock'; ?></td>
+                                <td><?php echo 'Update Stock'; ?></td>
+                            </tr>
+                            <?php } ?>
                             </tbody>
                         </table>
                         <div style="text-align: center;"><b>Total Items: <?php echo 'asd'; ?></b></div>
