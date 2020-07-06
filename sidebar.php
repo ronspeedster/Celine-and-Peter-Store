@@ -18,8 +18,6 @@ if (!isset($_SESSION['username'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Celine and Peter Store - Dashboard</title>
-
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -99,7 +97,7 @@ if (!isset($_SESSION['username'])) {
 
         <!-- Nav Item - Devices -->
         <li class="nav-item">
-            <a class="nav-link" href="devices.php">
+            <a class="nav-link" href="inventory.php">
                 <i class="fas fa-laptop"></i>
                 <span>Inventory</span></a>
         </li>

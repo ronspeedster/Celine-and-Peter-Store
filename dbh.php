@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 $host = 'localhost';
 $username = 'ronie';
 $password = 'ronie';
-$database = 'device_loan';
+$database = 'celine_peter_store';
 
 $mysqli = new mysqli($host, $username, $password, $database) or die(mysqli_error($mysqli));
 
