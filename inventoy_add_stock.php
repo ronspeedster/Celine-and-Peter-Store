@@ -2,14 +2,22 @@
 require_once 'process_inventory.php';
 
 include('sidebar.php');
-    $getLastItem = mysqli_query($mysqli, "SELECT * FROM inventory");
-    $lastItemID = 0;
-    while ($newLastItem = mysqli_fetch_array($getLastItem)) {
-        $lastItemID = $newLastItem['id'];
+$getLastItem = mysqli_query($mysqli, "SELECT * FROM inventory");
+$lastItemID = 0;
+while ($newLastItem = mysqli_fetch_array($getLastItem)) {
+    $lastItemID = $newLastItem['id'];
+}
+
+$getItems = mysqli_query($mysqli, "SELECT * FROM inventory");
+
+if(!isset($_GET['item_id'])){
+    ?>
+<meta http-equiv = "refresh" content = "0; url = inventory.php" />
+<?php
     }
+    else{
 
-    $getItems = mysqli_query($mysqli, "SELECT * FROM inventory");
-
+    }
 ?>
 <title>Inventory - Celine & Peter Store</title>
 <!-- Content Wrapper -->
@@ -87,7 +95,7 @@ include('sidebar.php');
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="inventoryTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="studentTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
                                 <th>Item Code</th>
@@ -101,32 +109,29 @@ include('sidebar.php');
                             </tr>
                             </thead>
                             <tbody>
-                            <?php while($newItems = $getItems->fetch_assoc()){
-                                $qty = $newItems['qty'];?>
-                            <tr>
-                                <td><?php echo $newItems['item_code']; ?></td>
-                                <td><?php echo $newItems['item_name']; ?></td>
-                                <td><?php echo $newItems['item_description']; ?></td>
-                                <td class="<?php if($qty<=10){ echo 'text-danger'; } ?>">
-                                    <?php echo $qty; ?>
-                                </td>
-                                <td><?php echo $newItems['item_price']; ?></td>
-                                <td><?php echo 'total sold here'; ?></td>
-                                <td><a href="inventoy_add_stock.php?item_id=<?php echo $newItems['id'];?>">Update / Add Stock</a></td>
-                                <td>
-                                    <!-- Start Drop down Delete here -->
-                                    <button class="btn btn-danger btn-secondary dropdown-toggle btn-sm mb-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="far fa-trash-alt"></i> Delete
-                                    </button>
-                                    <div class="dropdown-menu p-1" aria-labelledby="dropdownMenuButton btn-sm">
-                                        Are you sure you want to delete? You cannot undo the changes<br/>
-                                        <a href="process_inventory.php?delete=<?php echo $newItems['id']; ?>" class='btn btn-danger btn-sm'>
-                                            <i class="far fa-trash-alt"></i> Confirm Delete
-                                        </a>
-                                        <a href="#" class='btn btn-success btn-sm'><i class="far fa-window-close"></i> Cancel</a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php while($newItems = $getItems->fetch_assoc()){ ?>
+                                <tr>
+                                    <td><?php echo $newItems['item_code']; ?></td>
+                                    <td><?php echo $newItems['item_name']; ?></td>
+                                    <td><?php echo $newItems['item_description']; ?></td>
+                                    <td><?php echo $newItems['qty']; ?></td>
+                                    <td><?php echo $newItems['item_price']; ?></td>
+                                    <td><?php echo 'total sold here'; ?></td>
+                                    <td><?php echo 'Update Stock'; ?></td>
+                                    <td>
+                                        <!-- Start Drop down Delete here -->
+                                        <button class="btn btn-danger btn-secondary dropdown-toggle btn-sm mb-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="far fa-trash-alt"></i> Delete
+                                        </button>
+                                        <div class="dropdown-menu p-1" aria-labelledby="dropdownMenuButton btn-sm">
+                                            Are you sure you want to delete? You cannot undo the changes<br/>
+                                            <a href="process_inventory.php?delete=<?php echo $newItems['id']; ?>" class='btn btn-danger btn-sm'>
+                                                <i class="far fa-trash-alt"></i> Confirm Delete
+                                            </a>
+                                            <a href="#" class='btn btn-success btn-sm'><i class="far fa-window-close"></i> Cancel</a>
+                                        </div>
+                                    </td>
+                                </tr>
                             <?php } ?>
                             </tbody>
                         </table>
@@ -145,7 +150,7 @@ include('sidebar.php');
     <!-- JS here -->
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#inventoryTable').DataTable( {
+            $('#studentTable').DataTable( {
                 "pageLength": 25
             } );
         } );

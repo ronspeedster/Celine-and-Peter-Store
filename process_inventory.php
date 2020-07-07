@@ -18,4 +18,12 @@
         $_SESSION['msg_type'] = "success";
         header('location: inventory.php');
     }
+
+    if(isset($_GET['delete'])){
+        $item_id = $_GET['delete'];
+        $mysqli->query(" DELETE FROM inventory WHERE id = '$item_id' ") or die($mysqli->error());
+        $_SESSION['message'] = "Item has been deleted!";
+        $_SESSION['msg_type'] = "danger";
+        header('location: inventory.php');
+    }
 ?>
