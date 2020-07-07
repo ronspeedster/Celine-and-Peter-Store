@@ -1,5 +1,6 @@
 <?php
     include('dbh.php');
+    $getURI =$_SESSION['getURI'];
     $date = date_default_timezone_set('Asia/Manila');
     $date = date('Y-m-d');
 
@@ -14,6 +15,7 @@
 
         $mysqli->query("INSERT INTO inventory (id, item_code, item_name, qty, item_description, item_price) VALUES('$item_id','$item_code','$item_name', '$qty', '$description', '$price')") or die($mysqli->error());
         $mysqli->query("INSERT INTO inventory_cost (item_id, total_cost, date_added) VALUES('$item_id', '$total_cost', '$date')") or die($mysqli->error());
+
         $_SESSION['message'] = "An item has been added!";
         $_SESSION['msg_type'] = "success";
         header('location: inventory.php');
@@ -22,8 +24,27 @@
     if(isset($_GET['delete'])){
         $item_id = $_GET['delete'];
         $mysqli->query(" DELETE FROM inventory WHERE id = '$item_id' ") or die($mysqli->error());
+
         $_SESSION['message'] = "Item has been deleted!";
         $_SESSION['msg_type'] = "danger";
         header('location: inventory.php');
+    }
+
+    if(isset($_POST['add_stock'])){
+        $item_id = mysqli_real_escape_string($mysqli, $_POST['item_id']);
+        $old_stock = mysqli_real_escape_string($mysqli, $_POST['old_stock']);
+        $new_stock = mysqli_real_escape_string($mysqli, $_POST['new_stock']);
+
+        $new_stock = $new_stock + $old_stock;
+        $cost = mysqli_real_escape_string($mysqli, $_POST['cost']);
+
+
+        $mysqli->query("UPDATE inventory SET qty='$new_stock' WHERE id='$item_id' ") or die ($mysqli->error());
+        $mysqli->query("INSERT INTO inventory_cost (item_id, total_cost, date_added) VALUES('$item_id', '$cost', '$date')") or die($mysqli->error());
+
+        $_SESSION['message'] = "An item has been updated!";
+        $_SESSION['msg_type'] = "success";
+
+        header('location: '.$getURI);
     }
 ?>

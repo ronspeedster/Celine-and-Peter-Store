@@ -40,7 +40,7 @@ include('sidebar.php');
             <?php } ?>
             <!-- End Alert here -->
 
-            <!-- Add Student -->
+            <!-- Add Inventory -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Add Inventory</h6>
@@ -73,14 +73,14 @@ include('sidebar.php');
                                 </tbody>
                             </table>
                             <button class="float-right btn btn-sm btn-primary m-1" name="save" type="submit"><i class="far fa-save" ></i> Save</button>
-                            <a href="student.php" class="btn btn-danger btn-sm m-1 float-right"><i class="fas as fa-sync"></i> Cancel</a>
+                            <a href="inventory.php" class="btn btn-danger btn-sm m-1 float-right"><i class="fas as fa-sync"></i> Cancel</a>
                         </form>
                     </div>
                 </div>
             </div>
-            <!-- End Add Student -->
+            <!-- End Add Inventory -->
 
-            <!-- List of Student -->
+            <!-- List of Items -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">List of Items</h6>
@@ -134,7 +134,7 @@ include('sidebar.php');
                     </div>
                 </div>
             </div>
-            <!-- End Student Lists -->
+            <!-- End Item Lists -->
 
         </div>
         <!-- /.container-fluid -->
