@@ -79,14 +79,14 @@ if(!isset($_GET['item_id'])){
                                 <tr>
                                     <td><input type="text" name="item_id" class="form-control" value="<?php echo $newItems['id']; ?>" required readonly></td>
                                     <td><?php echo $newItems['item_code']; ?></td>
-                                    <td><?php echo $newItems['item_name']; ?></td>
+                                    <td><input type="text" name="item_name" class="form-control" value="<?php echo $newItems['item_name']; ?>" required></td>
                                     <td><input type="number" class="form-control" name="old_stock" placeholder="0" value="<?php echo $newItems['qty']; ?>" readonly></td>
                                     <td><input type="number" class="form-control" name="new_stock" placeholder="0" required></td>
                                     <td><input type="number" class="form-control" name="cost" placeholder="0" required></td>
                                 </tr>
                                 </tbody>
                             </table>
-                            <button class="float-right btn btn-sm btn-primary m-1" name="add_stock" type="submit"><i class="far fa-save" ></i> Add Stock</button>
+                            <button class="float-right btn btn-sm btn-primary m-1" name="add_stock" type="submit"><i class="far fa-save" ></i> Add / Update Stock</button>
                             <a href="<?php echo $getURI;?>" class="btn btn-danger btn-sm m-1 float-right"><i class="fas as fa-sync"></i> Cancel</a>
                         </form>
                     </div>

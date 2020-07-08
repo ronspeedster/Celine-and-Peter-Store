@@ -31,6 +31,7 @@
     }
 
     if(isset($_POST['add_stock'])){
+        $item_name = mysqli_real_escape_string($mysqli, $_POST['item_name']);
         $item_id = mysqli_real_escape_string($mysqli, $_POST['item_id']);
         $old_stock = mysqli_real_escape_string($mysqli, $_POST['old_stock']);
         $new_stock = mysqli_real_escape_string($mysqli, $_POST['new_stock']);
@@ -39,7 +40,7 @@
         $cost = mysqli_real_escape_string($mysqli, $_POST['cost']);
 
 
-        $mysqli->query("UPDATE inventory SET qty='$new_stock' WHERE id='$item_id' ") or die ($mysqli->error());
+        $mysqli->query("UPDATE inventory SET qty='$new_stock', item_name = '$item_name' WHERE id='$item_id' ") or die ($mysqli->error());
         $mysqli->query("INSERT INTO inventory_cost (item_id, total_cost, date_added) VALUES('$item_id', '$cost', '$date')") or die($mysqli->error());
 
         $_SESSION['message'] = "An item has been updated!";

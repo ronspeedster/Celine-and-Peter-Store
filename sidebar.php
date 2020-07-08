@@ -104,7 +104,7 @@ if (!isset($_SESSION['username'])) {
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="report.php">
+            <a class="nav-link" href="transactions.php">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Transactions</span></a>
         </li>
