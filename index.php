@@ -1,6 +1,11 @@
 <?php
 include('sidebar.php');
 include('dbh.php');
+
+$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$getURI = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$_SESSION['getURI'] = $getURI;
+
 ?>
 <title>Dashboard - Celine & Peter Store</title>
 <!-- Content Wrapper -->

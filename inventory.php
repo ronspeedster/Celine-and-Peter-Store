@@ -135,7 +135,7 @@ $getItems = mysqli_query($mysqli, "SELECT * FROM inventory");
                             <?php } ?>
                             </tbody>
                         </table>
-                        <div style="text-align: center;"><b>Total Items: <?php echo 'asd'; ?></b></div>
+
                     </div>
                 </div>
             </div>
