@@ -91,13 +91,13 @@ else{
                                     ?>
                                     <tr>
                                         <td>
-                                            <select class="form-control" name="item<?php echo $itemCounter; ?>">
+                                            <select dir="rtl" class="form-control" name="item<?php echo $itemCounter; ?>">
                                                 <?php
                                                     $getItemForAdding = mysqli_query($mysqli, "SELECT * FROM inventory");
                                                     while($newItemsForAdding=$getItemForAdding->fetch_assoc()){
                                                 ?>
-                                                        <option value="<?php echo $newItemsForAdding['id']; ?>" <?php if($item==$newItemsForAdding['id']){echo 'selected';} ?>>
-                                                            <?php echo strtoupper($newItemsForAdding['item_code'].' - '.$newItemsForAdding['item_name'].' - ₱'.$newItemsForAdding['item_price']); ?>
+                                                        <option class="" value="<?php echo $newItemsForAdding['id']; ?>" <?php if($item==$newItemsForAdding['id']){echo 'selected';} ?>>
+                                                            <?php echo strtoupper($newItemsForAdding['item_code'].' - '.$newItemsForAdding['item_name'].' - PHP'.$newItemsForAdding['item_price']); ?>
                                                         </option>
                                                 <?php } ?>
                                             </select>
@@ -126,7 +126,7 @@ else{
                             <table class="table" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th width="10%;">ID</th>
+                                    <th width="10%;">Control ID</th>
                                     <th width="">Full Name</th>
                                     <th width="">Address</th>
                                     <th width="">Phone Number</th>
@@ -167,7 +167,7 @@ else{
                             <thead>
                                 <tr>
                                     <th>Date</th>
-                                    <th>ID</th>
+                                    <th>Control ID</th>
                                     <th>Full Name</th>
                                     <th>Phone Num</th>
                                     <th>Total Amount</th>
