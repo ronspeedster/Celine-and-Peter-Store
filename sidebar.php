@@ -37,7 +37,7 @@ if (!isset($_SESSION['username'])) {
             scroll-behavior: smooth !important;
         }
         .bg-gradient-primary {
-            background-color: #0f1e5d !important;
+            background-color: #1e1e1f !important;
             background-image: none !important;
             background-image: none !important;
             background-size: cover !important;
@@ -111,6 +111,13 @@ if (!isset($_SESSION['username'])) {
 
         <!-- Nav Item - Accounts -->
         <li class="nav-item">
+            <a class="nav-link" href="report.php">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Report</span></a>
+        </li>
+
+        <!-- Nav Item - Accounts -->
+        <li class="nav-item" style="display: none;">
             <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Accounts</span></a>
