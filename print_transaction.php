@@ -18,7 +18,7 @@ $balance = $newTransaction['amount_paid'] - $newTransaction['total_amount'];
 
 $getTransactionLists = mysqli_query($mysqli, "SELECT * FROM transaction_lists WHERE transaction_id = '$id' ");
 ?>
-<title>View Transaction - Celine & Peter Store</title>
+<title>Print Transaction - Celine & Peter Store <?php echo $newTransaction['transaction_date'].'-'.$newTransaction['full_name']; ?></title>
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
