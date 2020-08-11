@@ -6,7 +6,7 @@ $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERV
 $getURI = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $_SESSION['getURI'] = $getURI;
 
-$getTotalTransactions = mysqli_query($mysqli, "SELECT count(id) AS id FROM transaction ");
+$getTotalTransactions = mysqli_query($mysqli, "SELECT count(id) AS id FROM transaction");
 $newTotalTransactions = $getTotalTransactions->fetch_array();
 //echo $newTotalTransactions['id'];
 
@@ -19,7 +19,7 @@ $newTotalTransactionsToday = $getTotalTransactionsToday->fetch_array();
 $getInventoryInStock = mysqli_query($mysqli, "SELECT count(id) AS id FROM inventory WHERE qty > 0 ");
 $newInventoryInStock = $getInventoryInStock->fetch_array();
 
-$getAllTransactions = mysqli_query($mysqli, "SELECT * FROM transaction");
+$getAllTransactions = mysqli_query($mysqli, "SELECT * FROM transaction ORDER BY id DESC LIMIT 50");
 
 $getTotalExpense = mysqli_query($mysqli, "SELECT sum(total_cost) AS total_cost FROM inventory_cost");
 $newTotalExpense = $getTotalExpense->fetch_array();
@@ -208,8 +208,8 @@ $grandTotal = $newTotalEarnings['grand_total'] - $newTotalEarnings['total_earnin
                                     $balance = $newtAllTransactions['amount_paid'] - $newtAllTransactions['total_amount'];
                                     ?>
                                 <tr>
-                                    <td><?php echo $newtAllTransactions['transaction_date']; ?></td>
                                     <td><a href="view_transaction.php?id=<?php echo $newtAllTransactions['id']; ?>" target="_blank"><?php echo $newtAllTransactions['id']; ?></a></td>
+                                    <td><?php echo $newtAllTransactions['transaction_date']; ?></td>
                                     <td><a href="view_transaction.php?id=<?php echo $newtAllTransactions['id']; ?>" target="_blank"><?php echo $newtAllTransactions['full_name']; ?></a></td>
                                     <td><?php echo $newtAllTransactions['phone_num']; ?></td>
                                     <td><?php echo '₱'.number_format($newtAllTransactions['total_amount'],2); ?></td>

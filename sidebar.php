@@ -28,9 +28,13 @@ if (!isset($_SESSION['username'])) {
     <link rel="icon" href="img/icon.ico" type="image/gif" sizes="16x16">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+
     <!-- required libraries -->
     <script src="libs/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet">
+    <!-- For Exporting -->
     <style>
         html{
             font-size: 0.9rem;
@@ -79,22 +83,6 @@ if (!isset($_SESSION['username'])) {
             Menu
         </div>
 
-        <!-- Nav Item - Borrower -->
-        <li class="nav-item" style="display: none;">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-               aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-money-check-alt"></i>
-                <span>Borrower</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Type:</h6>
-                    <a class="collapse-item" href="employee.php"><i class="fas fa-user-tag"></i> Employee</a>
-                    <a class="collapse-item" href="student.php"><i class="fas fa-graduation-cap"></i> Student</a>
-                </div>
-            </div>
-        </li>
-
         <!-- Nav Item - Devices -->
         <li class="nav-item">
             <a class="nav-link" href="inventory.php">
@@ -109,12 +97,23 @@ if (!isset($_SESSION['username'])) {
                 <span>Transactions</span></a>
         </li>
 
-        <!-- Nav Item - Accounts -->
-        <li class="nav-item">
-            <a class="nav-link" href="report.php">
+
+        <!-- Nav Item - Reports -->
+        <li class="nav-item" style="">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+               aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Report</span></a>
+                <span>Reports</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Type:</h6>
+                    <a class="collapse-item" href="report.php"><i class="fas fa-fw fa-table"></i> Daily Sales Report</a>
+                    <a class="collapse-item" href="report_earnings.php"><i class="fas fa-fw fa-table"></i>  DSR with Earnings</a>
+                </div>
+            </div>
         </li>
+
 
         <!-- Nav Item - Accounts -->
         <li class="nav-item" style="display: none;">

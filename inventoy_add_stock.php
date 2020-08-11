@@ -71,7 +71,8 @@ if(!isset($_GET['item_id'])){
                                     <th width="15%">Item Code</th>
                                     <th width="20%">Item Name</th>
                                     <th width="520">Current stock</th>
-                                    <th width="20%">Total stocks to be added</th>
+                                    <th width="10%">Total stocks to be added</th>
+                                    <th width="10%">(₱) Market Original Price / Item</th>
                                     <th width="20%">(₱) Total Cost</th>
                                 </tr>
                                 </thead>
@@ -82,6 +83,7 @@ if(!isset($_GET['item_id'])){
                                     <td><input type="text" name="item_name" class="form-control" value="<?php echo $newItems['item_name']; ?>" required></td>
                                     <td><input type="number" class="form-control" name="old_stock" placeholder="0" value="<?php echo $newItems['qty']; ?>" readonly></td>
                                     <td><input type="number" class="form-control" name="new_stock" placeholder="0" required></td>
+                                    <td><input type="number" class="form-control" step="0.01" name="market_price" placeholder="0" required></td>
                                     <td><input type="number" class="form-control" name="cost" placeholder="0" required></td>
                                 </tr>
                                 </tbody>
@@ -89,7 +91,9 @@ if(!isset($_GET['item_id'])){
                             <button class="float-right btn btn-sm btn-primary m-1" name="add_stock" type="submit"><i class="far fa-save" ></i> Add / Update Stock</button>
                             <a href="<?php echo $getURI;?>" class="btn btn-danger btn-sm m-1 float-right"><i class="fas as fa-sync"></i> Cancel</a>
                         </form>
+
                     </div>
+                    ***Note: <b>"Market Original Price / Item"</b> is needed to accurately calculate your earnings. Thank you
                 </div>
             </div>
             <!-- End Add Stock QTY -->

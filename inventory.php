@@ -60,9 +60,10 @@ $getItems = mysqli_query($mysqli, "SELECT * FROM inventory");
                                     <th width="">Item Code</th>
                                     <th width="">Item Name</th>
                                     <th width="">Quantity</th>
-                                    <th width="">(₱) Unit Price</th>
+                                    <th width="">(₱) Market Original Price / Item</th>
+                                    <th width="">(₱) Unit Price (SRP)</th>
                                     <th width="">(₱) Total Cost</th>
-                                    <th width="30%">Description (Optional)</th>
+                                    <th width="25%">Description (Optional)</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -71,8 +72,9 @@ $getItems = mysqli_query($mysqli, "SELECT * FROM inventory");
                                     <td><input type="text" name="item_code" class="form-control" required></td>
                                     <td><input type="text" name="item_name" class="form-control" required></td>
                                     <td><input type="number" name="qty" class="form-control" required></td>
-                                    <td><input type="number" name="price" class="form-control" required></td>
-                                    <td><input type="number" name="total_cost" class="form-control" required></td>
+                                    <td><input type="number" name="market_price" step="0.01" class="form-control" required></td>
+                                    <td><input type="number" name="price" step="0.01" class="form-control" required></td>
+                                    <td><input type="number" name="total_cost" step="0.01" class="form-control" required></td>
                                     <td><textarea name="description" class="form-control" style="min-height: 100px;"></textarea></td>
                                 </tr>
                                 </tbody>
@@ -81,6 +83,7 @@ $getItems = mysqli_query($mysqli, "SELECT * FROM inventory");
                             <a href="inventory.php" class="btn btn-danger btn-sm m-1 float-right"><i class="fas as fa-sync"></i> Cancel</a>
                         </form>
                     </div>
+                    ***Note: <b>"Market Original Price / Item"</b> is needed to accurately calculate your earnings. Thank you
                 </div>
             </div>
             <!-- End Add Inventory -->
@@ -99,8 +102,9 @@ $getItems = mysqli_query($mysqli, "SELECT * FROM inventory");
                                 <th>Item Name</th>
                                 <th>Description</th>
                                 <th>QTY (Stock)</th>
-                                <th>Price</th>
-                                <th>Total Sold</th>
+                                <th>Market Price</th>
+                                <th>Price (Your Price)</th>
+                                <th style="display: none;">Total Sold</th>
                                 <th>Update QTY</th>
                                 <th>Actions</th>
                             </tr>
@@ -115,8 +119,9 @@ $getItems = mysqli_query($mysqli, "SELECT * FROM inventory");
                                 <td class="<?php if($qty<=10){ echo 'text-danger'; } ?>">
                                     <?php echo $qty; ?>
                                 </td>
-                                <td><?php echo $newItems['item_price']; ?></td>
-                                <td><?php echo 'total sold here'; ?></td>
+                                <td>₱<?php echo $newItems['market_original_price']; ?></td>
+                                <td>₱<?php echo $newItems['item_price']; ?></td>
+                                <td style="display: none;"><?php echo 'total sold here'; ?></td>
                                 <td><a href="inventoy_add_stock.php?item_id=<?php echo $newItems['id'];?>">Update / Add Stock</a></td>
                                 <td>
                                     <!-- Start Drop down Delete here -->

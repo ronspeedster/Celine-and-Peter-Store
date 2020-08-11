@@ -20,7 +20,7 @@ if(isset($_GET['from_date'])){
     $to_date = $_GET['to_date'];
 }
 
-$getTransactions = mysqli_query($mysqli, "SELECT i.item_name, i.item_code, i.item_description, SUM(tl.qty) AS qty, SUM(tl.subtotal) AS subtotal
+$getTransactions = mysqli_query($mysqli, "SELECT i.item_name, i.item_code, i.market_original_price, i.item_description, SUM(tl.qty) AS qty, SUM(tl.subtotal) AS subtotal
 FROM transaction_lists tl
 LEFT JOIN inventory i
 ON i.id = tl.item_id
@@ -30,7 +30,7 @@ GROUP by i.id ");
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<title>Report <?php echo $from_date.' to '.$to_date; ?></title>
+<title>Daily Sales Report with Income <?php echo $from_date.' to '.$to_date; ?></title>
 <head>
 
     <meta charset="utf-8">
@@ -224,11 +224,15 @@ GROUP by i.id ");
                                 <th>Description</th>
                                 <th>QTY</th>
                                 <th>Amount</th>
+                                <th>Earnings / Income</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php while($newTransactions=$getTransactions->fetch_assoc()){
                                 //$balance = $newTransactions['total_amount'] - $newTransactions['amount_paid'];
+                                $market_price = $newTransactions['market_original_price'];
+                                $total_released_capital = $market_price * $newTransactions['qty'];
+                                $earnings = $newTransactions['subtotal'] - $total_released_capital;
                                 ?>
                                 <tr>
                                     <td><?php echo strtoupper($newTransactions['item_code']); ?></td>
@@ -236,18 +240,10 @@ GROUP by i.id ");
                                     <td><?php echo ucwords($newTransactions['item_description']); ?></td>
                                     <td><?php echo number_format($newTransactions['qty']); ?></td>
                                     <td>₱<?php echo number_format($newTransactions['subtotal'],2); ?></td>
+                                    <td>₱<?php echo number_format($earnings,2); ?></td>
                                 </tr>
                             <?php } ?>
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>Item Code</th>
-                                <th>Item Name</th>
-                                <th>Description</th>
-                                <th>QTY</th>
-                                <th>Amount</th>
-                            </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>

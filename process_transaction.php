@@ -43,14 +43,15 @@ if(isset($_POST['save'])){
         $price = $_POST['price'.$itemCtrl];
 
         if($qty!=NULL){
-            $mysqli->query("INSERT INTO transaction_lists (transaction_id, item_id, qty, adjusted_price) VALUES('$transactionID', '$item', '$qty', '$price' )") or die($mysqli->error());
+            $subTotal = $price*$qty;
+            $mysqli->query("INSERT INTO transaction_lists (transaction_id, item_id, qty, adjusted_price, transaction_date, subtotal) VALUES('$transactionID', '$item', '$qty', '$price','$date','$subTotal' )") or die($mysqli->error());
             //Update Inventory
             $getQtyInventory = mysqli_query($mysqli, "SELECT * FROM inventory WHERE id = '$item' ");
             $newQtyInventory = $getQtyInventory->fetch_array();
             $inventoryQty = $newQtyInventory['qty'] - $qty;
             $mysqli->query("UPDATE inventory SET qty='$inventoryQty' WHERE id='$item' ") or die ($mysqli->error());
         }
-        echo $subTotal = $price*$qty;
+
         echo $total += $subTotal;
 
         $itemController++;
